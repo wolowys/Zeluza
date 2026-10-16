@@ -241,16 +241,18 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     }
 
     .note-item {
-      padding: 8px 16px 8px 32px;
-      border-left: 3px solid transparent;
-      cursor: pointer;
-      transition: all 80ms ease;
       position: relative;
+      margin: 6px 8px;
+      padding: 8px 12px 8px 14px;
+      border: 1px solid var(--vscode-widget-border, var(--vscode-panel-border));
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 80ms ease, border-color 80ms ease;
     }
 
     .note-item:hover {
       background: var(--vscode-list-hoverBackground);
-      border-left-color: rgba(255, 214, 102, 0.6);
+      border-color: color-mix(in srgb, var(--vscode-foreground) 25%, transparent);
     }
 
     .note-content {
@@ -288,20 +290,20 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     }
 
     .note-actions {
-      position: absolute;
-      right: 8px;
-      top: 8px;
-      display: none;
-      gap: 2px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 4px;
+      margin-top: 6px;
+      visibility: hidden;
     }
 
     .note-item:hover .note-actions {
-      display: flex;
+      visibility: visible;
     }
 
     .action-btn {
-      width: 22px;
       height: 22px;
+      padding: 0 8px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -310,7 +312,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
       color: var(--vscode-foreground);
       border-radius: 4px;
       cursor: pointer;
-      font-size: 12px;
+      font-size: 11px;
       opacity: 0.7;
       transition: opacity 80ms ease;
     }
@@ -527,16 +529,17 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
       }
 
       return '<div class="note-item" data-note-id="' + note.id + '">'
-        + '<div class="note-actions">'
-        + '<button class="action-btn" data-edit="' + note.id + '" title="Edit">Edit</button>'
-        + '<button class="action-btn" data-delete="' + note.id + '" title="Delete">Delete</button>'
-        + '</div>'
         + '<div class="note-content">' + escapeHTML(note.content) + '</div>'
         + '<div class="note-meta">'
         + '<span class="note-line">L' + line + '</span>'
         + '<span class="note-anchor">' + escapeHTML(anchor) + '</span>'
         + '<span>' + time + '</span>'
-        + '</div></div>';
+        + '</div>'
+        + '<div class="note-actions">'
+        + '<button class="action-btn" data-edit="' + note.id + '" title="Edit">Edit</button>'
+        + '<button class="action-btn" data-delete="' + note.id + '" title="Delete">Delete</button>'
+        + '</div>'
+        + '</div>';
     }
 
     function bindEvents() {
