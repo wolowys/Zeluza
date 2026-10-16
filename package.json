@@ -2,7 +2,7 @@
   "name": "zeluza-smart-note",
   "displayName": "Zeluza - A Smart Note",
   "description": "Annotate any code range with smart notes — no inline comments. View on hover, manage in sidebar.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "Wolowys",
   "engines": {
     "vscode": "^1.140.0"

@@ -22,7 +22,7 @@ export function registerNoteCommands(
       }
 
       const content = await vscode.window.showInputBox({
-        title: '📝 Add Note',
+        title: 'Add Note',
         prompt: 'What do you want to note about this code?',
         placeHolder: 'Type your note here...',
         validateInput: (value) => {
@@ -41,7 +41,7 @@ export function registerNoteCommands(
       store.createNote(filePath, selection, content.trim(), anchorText);
       refreshSidebar();
 
-      vscode.window.showInformationMessage('📝 Note added!');
+      vscode.window.showInformationMessage('Note added!');
     })
   );
 
@@ -93,7 +93,7 @@ export function registerNoteCommands(
       store.remove(noteId);
       refreshSidebar();
 
-      vscode.window.showInformationMessage('🗑️ Note deleted.');
+      vscode.window.showInformationMessage('Note deleted.');
     })
   );
 

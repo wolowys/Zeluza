@@ -43,7 +43,7 @@ export class NoteHoverProvider implements vscode.HoverProvider {
       '',
       note.content,
       '',
-      `[Edit](${editUri}) · [Delete](${deleteUri})`,
+      `[Edit](${editUri}) | [Delete](${deleteUri})`,
     ];
 
     return lines.join('\n');
